@@ -51,5 +51,9 @@
 	<string>This application requires location services to work</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This application requires location services to work</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This application requires camera services to work</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This application requires Microphone services to work</string>
 </dict>
 </plist>

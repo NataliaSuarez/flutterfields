@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:location/location.dart';
 import 'package:geolocator/geolocator.dart';
@@ -5,14 +6,30 @@ import 'package:flutter/material.dart';
 import 'package:flutterfields/form_view.dart';
 import 'package:open_location_picker/open_location_picker.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Obtain a list of the available cameras on the device.
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+
+  runApp(MyApp(
+    camera: firstCamera,
+  ));
 }
 
 class MyApp extends StatelessWidget {
   final Location location = Location();
+  CameraDescription camera;
 
-  MyApp({super.key});
+  MyApp({
+    super.key,
+    required this.camera,
+  });
 
   Future<LatLng?> _getCurrentLocationUsingLocationPackage() async {
     bool _serviceEnabled;
@@ -90,9 +107,9 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
             appBar: AppBar(title: const Text('Flutter Fields')),
-            body: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: FormView(),
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: FormView(camera: camera),
             )),
       ),
     );
