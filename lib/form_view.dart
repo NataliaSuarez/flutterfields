@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfields/common/custom_text_field.dart';
 import 'package:flutterfields/common/date_picker_field.dart';
+import 'package:flutterfields/common/map_view_button.dart';
 import 'package:flutterfields/common/sf_date_picker_field.dart';
+import 'package:open_location_picker/open_location_picker.dart';
 
 class FormView extends StatefulWidget {
   const FormView({super.key});
@@ -28,12 +30,15 @@ class FormViewState extends State<FormView> {
           CustomTextField(valor: 'something'),
           DatePickerField(valor: 'something'),
           const SfDatePickerField(),
-          // SfDatePickerField
-          // SfDateRangePicker(
-          //   view: DateRangePickerView.month,
-          //   monthViewSettings:
-          //       const DateRangePickerMonthViewSettings(firstDayOfWeek: 1),
-          // )
+          const MapViewButton(),
+          OpenMapPicker(
+            decoration: const InputDecoration(
+              hintText: "My Location",
+            ),
+            onSaved: (FormattedLocation? newValue) {
+              /// save new value
+            },
+          )
         ],
       )),
     );

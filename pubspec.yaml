@@ -39,6 +39,10 @@ dependencies:
   stacked: ^3.0.0
   syncfusion_flutter_datepicker: ^20.2.50
   intl: ^0.17.0
+  maps_launcher: ^2.0.1
+  open_location_picker: ^0.2.1
+  location: ^4.4.0
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:

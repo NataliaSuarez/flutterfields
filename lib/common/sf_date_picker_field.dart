@@ -22,7 +22,6 @@ class SfDatePickerFieldState extends State<SfDatePickerField> {
       if (args.value is PickerDateRange) {
         _range = '${DateFormat('dd/MM/yyyy').format(args.value.startDate)} -'
             ' ${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}';
-        print(args.value);
       } else if (args.value is DateTime) {
         _selectedDate = args.value.toString();
       } else if (args.value is List<DateTime>) {
